@@ -179,12 +179,13 @@ body::before {
   cursor: pointer;
   letter-spacing: 0.02em;
   transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
+  border: none;
+  background: none;
 }
 .cv-download-btn {
   margin-top: 20px;
   background: var(--accent);
   color: #fff;
-  border: none;
   box-shadow: none;
 }
 .cv-download-btn:hover { background: #122a52; }
@@ -204,6 +205,107 @@ body::before {
   box-shadow: 0 3px 10px rgba(26,58,107,0.13);
 }
 .cv-download-btn svg { flex-shrink: 0; }
+
+/* PDF Modal */
+.pdf-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 18, 40, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.pdf-modal-overlay.open {
+  display: flex;
+}
+.pdf-modal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 64px rgba(10,18,40,0.22);
+  animation: modal-in 0.2s ease;
+}
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.pdf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+  flex-shrink: 0;
+}
+.pdf-modal-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pdf-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.pdf-dl-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.pdf-dl-btn:hover { background: #122a52; }
+.pdf-close-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--fg-muted);
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.pdf-close-btn:hover { background: var(--border); color: var(--fg); }
+.pdf-modal-body {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+.pdf-modal-body iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  border: none;
+  display: block;
+}
 
 .hero-tags {
   display: flex;
@@ -372,7 +474,152 @@ section:last-of-type { border-bottom: none; }
   margin-top: 6px;
 }
 
+/* Module semester grid */
+.edu-modules {
+  grid-column: 1 / -1;
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 680px) {
+  .edu-modules { grid-template-columns: repeat(2, 1fr); }
+}
+
+.edu-sem {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.edu-sem.upcoming {
+  opacity: 0.6;
+}
+
+.edu-sem-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.edu-sem-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.edu-sem-tag {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 20px;
+  background: var(--bg-alt);
+  color: var(--fg-muted);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.edu-sem-tag.current {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent-light);
+}
+
+.edu-mod-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.edu-mod-list li {
+  font-size: 12px;
+  color: var(--fg-muted);
+  line-height: 1.45;
+  padding-left: 10px;
+  position: relative;
+}
+
+.edu-mod-list li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--border);
+}
+
+.edu-mod-list li.elective-group {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+  padding-left: 0;
+}
+
+.edu-mod-list li.elective-group::before {
+  content: none;
+}
+
+.elective-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  display: block;
+  margin-bottom: 5px;
+}
+
+.elective-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.elective-list li {
+  font-size: 11px;
+  color: var(--fg-muted);
+  padding-left: 10px;
+  position: relative;
+  line-height: 1.4;
+}
+
+.elective-list li::before {
+  content: '·';
+  position: absolute;
+  left: 1px;
+  color: var(--border);
+}
+
 /* PROJECTS */
+.edu-projects {
+  grid-column: 1 / -1;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+
+.edu-projects-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 14px;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -610,10 +857,10 @@ footer {
       <span class="tag" data-en="Passion for Real Estate Development" data-de="Leidenschaft für Real Estate Development">Passion for Real Estate Development</span>
       <span class="tag">RICS Student Member</span>
     </div>
-    <a class="cv-download-btn" href="CV_Noel_Adrian_Schulz.pdf" download>
+    <button class="cv-download-btn" onclick="openPdfModal('CV_Noel_Adrian_Schulz.pdf','Curriculum Vitae – Noel Adrian Schulz')">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      <span data-en="Download CV" data-de="Lebenslauf herunterladen">Download CV</span>
-    </a>
+      <span data-en="View CV" data-de="Lebenslauf ansehen">View CV</span>
+    </button>
   </div>
   </div>
 
@@ -631,10 +878,10 @@ footer {
         <li data-en="Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)" data-de="Betreuung von 500+ Interessenten; Weitergabe von 160+ qualifizierten Leads (Gesamtvolumen AED 40M+)">Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)</li>
         <li data-en="Supported cross-selling across Property Management, Legal Advisory, and Mortgage Financing" data-de="Cross-Selling in Property Management, Rechtsberatung und Hypothekenfinanzierung">Supported cross-selling across Property Management, Legal Advisory, and Mortgage Financing</li>
       </ul>
-      <a class="cert-download-btn" href="WorkCertificate_NoelSchulz_DGHomesRealEstate.pdf" download>
+      <button class="cert-download-btn" onclick="openPdfModal('WorkCertificate_NoelSchulz_DGHomesRealEstate.pdf','Work Certificate – DG Homes Real Estate')">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-en="Download Work Certificate" data-de="Arbeitszeugnis herunterladen">Download Work Certificate</span>
-      </a>
+        <span data-en="View Work Certificate" data-de="Arbeitszeugnis ansehen">View Work Certificate</span>
+      </button>
     </div>
 
     <div class="exp-item">
@@ -646,10 +893,10 @@ footer {
         <li data-en="Gained practical experience in Private and Corporate Client Advisory, Mortgage Financing and cross-border banking operations" data-de="Praktische Erfahrungen in Privat- und Firmenkundenberatung, Baufinanzierung und grenzüberschreitendem Bankgeschäft">Gained practical experience in Private and Corporate Client Advisory, Mortgage Financing and cross-border banking operations</li>
         <li data-en="Completed a structured rotation across Sales Management, Corporate Banking, Credit, Controlling and Payments" data-de="Strukturierte Rotation durch Vertriebssteuerung, Firmenkundengeschäft, Kredit, Controlling und Zahlungsverkehr">Completed a structured rotation across Sales Management, Corporate Banking, Credit, Controlling and Payments</li>
       </ul>
-      <a class="cert-download-btn" href="WorkCertificate_NoelSchulz_VolksbankDreilaendereck.pdf" download>
+      <button class="cert-download-btn" onclick="openPdfModal('WorkCertificate_NoelSchulz_VolksbankDreilaendereck.pdf','Work Certificate – Volksbank Dreiländereck eG')">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-en="Download Work Certificate" data-de="Arbeitszeugnis herunterladen">Download Work Certificate</span>
-      </a>
+        <span data-en="View Work Certificate" data-de="Arbeitszeugnis ansehen">View Work Certificate</span>
+      </button>
     </div>
 
     <div class="exp-item">
@@ -660,10 +907,10 @@ footer {
       <ul class="exp-bullets">
         <li data-en="Gained exposure to day-to-day banking operations and private client advisory in a retail branch" data-de="Einblick in Tagesgeschäft und Privatkundenberatung in einer Filiale">Gained exposure to day-to-day banking operations and private client advisory in a retail branch</li>
       </ul>
-      <a class="cert-download-btn" href="InternshipCertificate_NoelSchulz_DeutscheBank.pdf" download>
+      <button class="cert-download-btn" onclick="openPdfModal('InternshipCertificate_NoelSchulz_DeutscheBank.pdf','Internship Certificate – Deutsche Bank')">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-en="Download Work Certificate" data-de="Arbeitszeugnis herunterladen">Download Work Certificate</span>
-      </a>
+        <span data-en="View Internship Certificate" data-de="Praktikumszeugnis ansehen">View Internship Certificate</span>
+      </button>
     </div>
   </section>
 
@@ -676,7 +923,83 @@ footer {
       <div class="edu-period">09/2026 – 09/2028</div>
       <div class="edu-school">HSLU – Lucerne University of Applied Sciences</div>
       <div class="edu-location">Rotkreuz, Switzerland</div>
-      <p class="edu-detail" data-en="AACSB-accredited · 90 ECTS · Taught in English · Modules include: Real Estate Asset Management, Real Estate Investment &amp; Finance, Real Estate Development, Swiss Real Estate Markets, Macroeconomics and Financial Markets, Quantitative &amp; Qualitative Research Methods" data-de="AACSB-akkreditiert · 90 ECTS · Lehrsprache Englisch · Module u. a.: Real Estate Asset Management, Real Estate Investment &amp; Finance, Real Estate Development, Swiss Real Estate Markets, Makroökonomie und Finanzmärkte, Quantitative &amp; Qualitative Forschungsmethoden">AACSB-accredited · 90 ECTS · Taught in English · Modules include: Real Estate Asset Management, Real Estate Investment &amp; Finance, Real Estate Development, Swiss Real Estate Markets, Macroeconomics and Financial Markets, Quantitative &amp; Qualitative Research Methods</p>
+      <p class="edu-detail" data-en="AACSB-accredited · 90 ECTS · Taught in English" data-de="AACSB-akkreditiert · 90 ECTS · Lehrsprache Englisch">AACSB-accredited · 90 ECTS · Taught in English</p>
+      <div class="edu-modules">
+        <div class="edu-sem">
+          <div class="edu-sem-header">
+            <span class="edu-sem-label" data-en="Semester 1" data-de="Semester 1">Semester 1</span>
+            <span class="edu-sem-tag current" data-en="current" data-de="laufend">current</span>
+          </div>
+          <ul class="edu-mod-list">
+            <li data-en="Macroeconomics and Financial Markets" data-de="Makroökonomie und Finanzmärkte">Macroeconomics and Financial Markets</li>
+            <li data-en="Real Estate Asset Management" data-de="Real Estate Asset Management">Real Estate Asset Management</li>
+            <li data-en="Swiss Real Estate Markets" data-de="Schweizer Immobilienmärkte">Swiss Real Estate Markets</li>
+            <li data-en="Qualitative Research" data-de="Qualitative Forschungsmethoden">Qualitative Research</li>
+            <li data-en="Quantitative Research" data-de="Quantitative Forschungsmethoden">Quantitative Research</li>
+          </ul>
+        </div>
+        <div class="edu-sem upcoming">
+          <div class="edu-sem-header">
+            <span class="edu-sem-label" data-en="Semester 2" data-de="Semester 2">Semester 2</span>
+            <span class="edu-sem-tag" data-en="upcoming" data-de="kommend">upcoming</span>
+          </div>
+          <ul class="edu-mod-list">
+            <li data-en="Real Estate Investment &amp; Finance" data-de="Real Estate Investment &amp; Finance">Real Estate Investment &amp; Finance</li>
+            <li data-en="Leadership, Sustainability &amp; Ethics" data-de="Leadership, Nachhaltigkeit &amp; Ethik">Leadership, Sustainability &amp; Ethics</li>
+            <li class="elective-group">
+              <span class="elective-label" data-en="Electives (e.g.)" data-de="Wahlpflichtmodule (z. B.)">Electives (e.g.)</span>
+              <ul class="elective-list">
+                <li data-en="Asset Management" data-de="Asset Management">Asset Management</li>
+                <li data-en="International Topics in RE Investments" data-de="Internationale Themen RE Investments">International Topics in RE Investments</li>
+                <li data-en="Fixed Income Management" data-de="Fixed Income Management">Fixed Income Management</li>
+                <li data-en="Pension Fund Management" data-de="Pensionskassenmanagement">Pension Fund Management</li>
+                <li data-en="Equity Investments" data-de="Aktienanlagen">Equity Investments</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="edu-sem upcoming">
+          <div class="edu-sem-header">
+            <span class="edu-sem-label" data-en="Semester 3" data-de="Semester 3">Semester 3</span>
+            <span class="edu-sem-tag" data-en="upcoming" data-de="kommend">upcoming</span>
+          </div>
+          <ul class="edu-mod-list">
+            <li data-en="Real Estate Development" data-de="Real Estate Development">Real Estate Development</li>
+            <li data-en="Applied Research Projects" data-de="Applied Research Projects">Applied Research Projects</li>
+            <li data-en="Preliminary Study for Master Thesis" data-de="Vorstudie Masterthesis">Preliminary Study for Master Thesis</li>
+            <li class="elective-group">
+              <span class="elective-label" data-en="Electives (e.g.)" data-de="Wahlpflichtmodule (z. B.)">Electives (e.g.)</span>
+              <ul class="elective-list">
+                <li data-en="Private Equity" data-de="Private Equity">Private Equity</li>
+                <li data-en="Hedge Funds" data-de="Hedge Funds">Hedge Funds</li>
+                <li data-en="Insurance-Linked Securities" data-de="Insurance-Linked Securities">Insurance-Linked Securities</li>
+                <li data-en="Commodities" data-de="Rohstoffe">Commodities</li>
+                <li data-en="Crypto Assets" data-de="Krypto Assets">Crypto Assets</li>
+                <li data-en="Real Estate" data-de="Real Estate">Real Estate</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div class="edu-sem upcoming">
+          <div class="edu-sem-header">
+            <span class="edu-sem-label" data-en="Semester 4" data-de="Semester 4">Semester 4</span>
+            <span class="edu-sem-tag" data-en="upcoming" data-de="kommend">upcoming</span>
+          </div>
+          <ul class="edu-mod-list">
+            <li data-en="Master's Thesis" data-de="Masterthesis">Master's Thesis</li>
+            <li class="elective-group">
+              <span class="elective-label" data-en="Electives (e.g.)" data-de="Wahlpflichtmodule (z. B.)">Electives (e.g.)</span>
+              <ul class="elective-list">
+                <li data-en="Venture Capital" data-de="Venture Capital">Venture Capital</li>
+                <li data-en="Mergers &amp; Acquisitions" data-de="Mergers &amp; Acquisitions">Mergers &amp; Acquisitions</li>
+                <li data-en="Corporate Financial Management" data-de="Corporate Financial Management">Corporate Financial Management</li>
+                <li data-en="Restructuring &amp; Turnaround Management" data-de="Restrukturierung &amp; Turnaroundmanagement">Restructuring &amp; Turnaround Management</li>
+                <li data-en="Taxation of Investment Entities" data-de="Besteuerung von Investmentgesellschaften">Taxation of Investment Entities</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="edu-item">
@@ -684,29 +1007,39 @@ footer {
       <div class="edu-period">10/2022 – 09/2025</div>
       <div class="edu-school">DHBW – Baden-Württemberg Cooperative State University</div>
       <div class="edu-location">Lörrach, Germany</div>
-      <p class="edu-detail" data-en="Overall grade: 2.0 DE · Core modules: Portfolio Management, Sustainable Finance, Credit Business, Accounting and Taxation, Law, Data Analysis" data-de="Gesamtnote: 2,0 · Kernmodule: Portfoliomanagement, Sustainable Finance, Kreditgeschäft, Buchführung und Steuern, Recht, Datenanalyse">Overall grade: 2.0 DE · Core modules: Portfolio Management, Sustainable Finance, Credit Business, Accounting and Taxation, Law, Data Analysis</p>
-    </div>
-  </section>
+      <p class="edu-detail" data-en="Overall grade: 2.0 DE" data-de="Gesamtnote: 2,0">Overall grade: 2.0 DE</p>
+      <ul class="edu-mod-list" style="margin-top: 10px;">
+        <li data-en="Portfolio Management" data-de="Portfoliomanagement">Portfolio Management</li>
+        <li data-en="Sustainable Finance" data-de="Sustainable Finance">Sustainable Finance</li>
+        <li data-en="Credit Business" data-de="Kreditgeschäft">Credit Business</li>
+        <li data-en="Digital Data Analysis" data-de="Digitale Datenanalyse">Digital Data Analysis</li>
+        <li data-en="Consulting & Sales Competence" data-de="Beratungs- & Vertriebskompetenz">Consulting & Sales Competence</li>
+        <li data-en="Accounting & Taxation" data-de="Buchführung & Steuern">Accounting & Taxation</li>
+        <li data-en="Business Policy" data-de="Unternehmenspolitik">Business Policy</li>
+        <li data-en="Macroeconomics" data-de="Volkswirtschaftslehre">Macroeconomics</li>
+      </ul>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <p class="section-label" data-en="Projects" data-de="Projekte">Projects</p>
-    <div class="projects-grid">
+      <!-- Projects nested under Bachelor -->
+      <div class="edu-projects">
+        <p class="edu-projects-label" data-en="Academic Projects" data-de="Akademische Projekte">Academic Projects</p>
+        <div class="projects-grid">
 
-      <div class="project-card">
-        <div class="project-type" data-en="Bachelor Thesis · Grade 1.3" data-de="Bachelorarbeit · Note 1,3">Bachelor Thesis · Grade 1.3</div>
-        <div class="project-title" data-en="Private Real Estate Portfolio Management in Private Banking" data-de="Private Real Estate Portfolio Management im Private Banking">Private Real Estate Portfolio Management in Private Banking</div>
-        <div class="project-desc" data-en="Analyzed existing advisory structures and client portfolios at Volksbank Dreiländereck eG to develop advisory and compensation models for a private real estate portfolio management offering." data-de="Analyse bestehender Beratungsstrukturen und Kundenportfolios bei der Volksbank Dreiländereck eG zur Entwicklung von Beratungs- und Vergütungsansätzen für ein Private Real Estate Portfolio Management.">Analyzed existing advisory structures and client portfolios at Volksbank Dreiländereck eG to develop advisory and compensation models for a private real estate portfolio management offering.</div>
-        <div class="project-result" data-en="Revenue potential: up to EUR 480K p.a." data-de="Ertragspotenzial: bis zu EUR 480K p.a.">Revenue potential: up to EUR 480K p.a.</div>
+          <div class="project-card">
+            <div class="project-type" data-en="Bachelor Thesis · Grade 1.3" data-de="Bachelorarbeit · Note 1,3">Bachelor Thesis · Grade 1.3</div>
+            <div class="project-title" data-en="Private Real Estate Portfolio Management in Private Banking" data-de="Private Real Estate Portfolio Management im Private Banking">Private Real Estate Portfolio Management in Private Banking</div>
+            <div class="project-desc" data-en="Analyzed existing advisory structures and client portfolios at Volksbank Dreiländereck eG to develop advisory and compensation models for a private real estate portfolio management offering." data-de="Analyse bestehender Beratungsstrukturen und Kundenportfolios bei der Volksbank Dreiländereck eG zur Entwicklung von Beratungs- und Vergütungsansätzen für ein Private Real Estate Portfolio Management.">Analyzed existing advisory structures and client portfolios at Volksbank Dreiländereck eG to develop advisory and compensation models for a private real estate portfolio management offering.</div>
+            <div class="project-result" data-en="Revenue potential: up to EUR 480K p.a." data-de="Ertragspotenzial: bis zu EUR 480K p.a.">Revenue potential: up to EUR 480K p.a.</div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-type" data-en="Project Assignment" data-de="Projektarbeit">Project Assignment</div>
+            <div class="project-title" data-en="Energy-Efficient Renovation Potential in Residential Real Estate" data-de="Energetisches Sanierungspotenzial im Wohnimmobilienbestand">Energy-Efficient Renovation Potential in Residential Real Estate</div>
+            <div class="project-desc" data-en="Analyzed the residential property stock requiring energy-efficient renovation in the Volksbank Dreiländereck market area, identifying assets with untapped financing potential and modelling interest income scenarios." data-de="Analyse des sanierungsbedürftigen Wohnimmobilienbestands im Marktgebiet der Volksbank Dreiländereck eG; Identifizierung von Objekten mit ungenutztem Finanzierungspotenzial und Modellierung von Zinsertragsszenarios.">Analyzed the residential property stock requiring energy-efficient renovation in the Volksbank Dreiländereck market area, identifying assets with untapped financing potential and modelling interest income scenarios.</div>
+            <div class="project-result" data-en="670 assets identified" data-de="670 Objekte identifiziert">670 assets identified</div>
+          </div>
+
+        </div>
       </div>
-
-      <div class="project-card">
-        <div class="project-type" data-en="Project Assignment" data-de="Projektarbeit">Project Assignment</div>
-        <div class="project-title" data-en="Energy-Efficient Renovation Potential in Residential Real Estate" data-de="Energetisches Sanierungspotenzial im Wohnimmobilienbestand">Energy-Efficient Renovation Potential in Residential Real Estate</div>
-        <div class="project-desc" data-en="Analyzed the residential property stock requiring energy-efficient renovation in the Volksbank Dreiländereck market area, identifying assets with untapped financing potential and modelling interest income scenarios." data-de="Analyse des sanierungsbedürftigen Wohnimmobilienbestands im Marktgebiet der Volksbank Dreiländereck eG; Identifizierung von Objekten mit ungenutztem Finanzierungspotenzial und Modellierung von Zinsertragsszenarios.">Analyzed the residential property stock requiring energy-efficient renovation in the Volksbank Dreiländereck market area, identifying assets with untapped financing potential and modelling interest income scenarios.</div>
-        <div class="project-result" data-en="670 assets identified" data-de="670 Objekte identifiziert">670 assets identified</div>
-      </div>
-
     </div>
   </section>
 
@@ -873,4 +1206,50 @@ footer {
     const saved = localStorage.getItem('portfolio-lang');
     if (saved && saved !== 'en') applyLang(saved);
   } catch(e) {}
+</script>
+
+<!-- PDF Modal -->
+<div class="pdf-modal-overlay" id="pdfModal" onclick="handleModalOverlayClick(event)">
+  <div class="pdf-modal" id="pdfModalBox">
+    <div class="pdf-modal-header">
+      <span class="pdf-modal-title" id="pdfModalTitle"></span>
+      <div class="pdf-modal-actions">
+        <a class="pdf-dl-btn" id="pdfDlBtn" href="#" download>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span id="pdfDlLabel">Download</span>
+        </a>
+        <button class="pdf-close-btn" onclick="closePdfModal()" aria-label="Close">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="pdf-modal-body">
+      <iframe id="pdfIframe" src="" title="Document preview"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openPdfModal(file, title) {
+    const overlay = document.getElementById('pdfModal');
+    document.getElementById('pdfModalTitle').textContent = title;
+    document.getElementById('pdfIframe').src = file;
+    document.getElementById('pdfDlBtn').href = file;
+    document.getElementById('pdfDlBtn').setAttribute('download', file);
+    document.getElementById('pdfDlLabel').textContent = currentLang === 'de' ? 'Herunterladen' : 'Download';
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePdfModal() {
+    const overlay = document.getElementById('pdfModal');
+    overlay.classList.remove('open');
+    document.getElementById('pdfIframe').src = '';
+    document.body.style.overflow = '';
+  }
+  function handleModalOverlayClick(e) {
+    if (e.target === document.getElementById('pdfModal')) closePdfModal();
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closePdfModal();
+  });
 </script>
