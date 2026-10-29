@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Noel Adrian Schulz</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap">
@@ -142,12 +141,49 @@ body::before {
 }
 
 .hero-summary {
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.7;
+  list-style: none;
+  padding: 0;
   color: var(--fg-muted);
-  max-width: 600px;
+  max-width: 660px;
   margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
+.hero-summary li {
+  padding-left: 18px;
+  position: relative;
+}
+.hero-summary li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  letter-spacing: 0.02em;
+}
+.cv-download-btn:hover { background: #122a52; }
+.cv-download-btn svg { flex-shrink: 0; }
 
 .hero-tags {
   display: flex;
@@ -206,11 +242,22 @@ section:last-of-type { border-bottom: none; }
   font-weight: 500;
   color: var(--fg-muted);
   grid-column: 2;
-  grid-row: 1 / 3;
-  align-self: start;
+  grid-row: 1;
+  align-self: center;
   white-space: nowrap;
   letter-spacing: 0.02em;
   font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.exp-location {
+  font-size: 12px;
+  color: var(--fg-muted);
+  grid-column: 2;
+  grid-row: 2;
+  text-align: right;
+  white-space: nowrap;
+  align-self: center;
 }
 
 .exp-company {
@@ -218,11 +265,14 @@ section:last-of-type { border-bottom: none; }
   font-weight: 600;
   color: var(--accent);
   grid-column: 1;
+  grid-row: 2;
   margin-bottom: 10px;
+  align-self: center;
 }
 
 .exp-bullets {
   grid-column: 1 / -1;
+  grid-row: 3;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -266,10 +316,21 @@ section:last-of-type { border-bottom: none; }
   font-size: 12px;
   color: var(--fg-muted);
   grid-column: 2;
-  grid-row: 1 / 3;
-  align-self: start;
+  grid-row: 1;
+  align-self: center;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+.edu-location {
+  font-size: 12px;
+  color: var(--fg-muted);
+  grid-column: 2;
+  grid-row: 2;
+  text-align: right;
+  white-space: nowrap;
+  align-self: center;
 }
 
 .edu-school {
@@ -277,6 +338,8 @@ section:last-of-type { border-bottom: none; }
   font-weight: 600;
   color: var(--accent);
   grid-column: 1;
+  grid-row: 2;
+  align-self: center;
 }
 
 .edu-detail {
@@ -507,16 +570,28 @@ footer {
   <div class="hero">
     <p class="hero-eyebrow" data-en="Real Estate · Finance · Strategy" data-de="Immobilien · Finanzen · Strategie">Real Estate · Finance · Strategy</p>
     <h1 class="hero-name">Noel Adrian<br>Schulz</h1>
-    <p class="hero-summary" data-en="Background in banking and real estate — from mortgage financing and client advisory at a cooperative bank to property sales in Dubai. Currently studying MSc Real Estate at HSLU Lucerne. RICS Student Member." data-de="Hintergrund in Banking und Immobilien — von Baufinanzierung und Kundenberatung bei einer Genossenschaftsbank bis zum Immobilienverkauf in Dubai. Derzeit im MSc Real Estate an der HSLU Luzern. RICS Student Member.">
-      Background in banking and real estate — from mortgage financing and client advisory at a cooperative bank to property sales in Dubai. Currently studying MSc Real Estate at HSLU Lucerne. RICS Student Member.
-    </p>
+    <ul class="hero-summary">
+      <li data-en="currently pursuing a Master of Science in Real Estate at the Lucerne University of Applied Sciences and Arts (HSLU) - fully taught in english and unique in its kind with strong ties to the swiss real estate sector (RICS)"
+          data-de="Derzeit im Master of Science in Real Estate an der Hochschule Luzern (HSLU) — Lehrsprache Englisch, einzigartig in seiner Art mit starker Verankerung im Schweizer Immobilienmarkt (RICS)."
+          >currently pursuing a Master of Science in Real Estate at the Lucerne University of Applied Sciences and Arts (HSLU) - fully taught in english and unique in its kind with strong ties to the swiss real estate sector (RICS)</li>
+      <li data-en="previous full time working experience of 9 months in a real estate company in Dubai focused on DACH-Investors after exceling in an initial internship - managing a pipeline of &gt;500 prospects, passing 160 hot leads to closing brokers and thereby contributing to a transaction volume of 40+ Mio. AED"
+          data-de="9 Monate Vollzeiterfahrung in einem auf DACH-Investoren spezialisierten Immobilienunternehmen in Dubai nach erfolgreichem Praktikum — Pipeline von über 500 Prospects, 160 weitergeleitete Hot Leads und Beitrag zu einem Transaktionsvolumen von über 40 Mio. AED."
+          >previous full time working experience of 9 months in a real estate company in Dubai focused on DACH-Investors after exceling in an initial internship - managing a pipeline of &gt;500 prospects, passing 160 hot leads to closing brokers and thereby contributing to a transaction volume of 40+ Mio. AED</li>
+      <li data-en="Foundation laid with a B.A. in Business Administration (Financial Services) with an academic focus on portfolio management while working as a dual student in retail banking at Volksbank Dreiländereck eG near the Swiss border - completed a structured rotation across private and corporate client advisory, real estate and mortgage financing, credit, controlling, payments and compliance"
+          data-de="Grundlage durch einen B.A. BWL-Finanzdienstleistungen mit akademischem Schwerpunkt Portfoliomanagement als Dualer Student bei der Volksbank Dreiländereck eG — strukturierte Rotation durch Privat- und Firmenkundenberatung, Immobilien und Baufinanzierung, Kredit, Controlling, Zahlungsverkehr und Compliance."
+          >Foundation laid with a B.A. in Business Administration (Financial Services) with an academic focus on portfolio management while working as a dual student in retail banking at Volksbank Dreiländereck eG near the Swiss border - completed a structured rotation across private and corporate client advisory, real estate and mortgage financing, credit, controlling, payments and compliance</li>
+    </ul>
     <div class="hero-tags">
-      <span class="tag">Asset Management</span>
-      <span class="tag">Portfolio Management</span>
-      <span class="tag">Real Estate Finance</span>
-      <span class="tag">Investment Advisory</span>
+      <span class="tag" data-en="Master of Science Real Estate" data-de="Master of Science Real Estate">Master of Science Real Estate</span>
+      <span class="tag" data-en="UAE and Swiss Real Estate Sector" data-de="UAE und Schweizer Immobilienmarkt">UAE and Swiss Real Estate Sector</span>
+      <span class="tag" data-en="Passion for Real Estate Portfolio Management" data-de="Leidenschaft für Real Estate Portfolio Management">Passion for Real Estate Portfolio Management</span>
+      <span class="tag" data-en="Passion for Real Estate Development" data-de="Leidenschaft für Real Estate Development">Passion for Real Estate Development</span>
       <span class="tag">RICS Student Member</span>
     </div>
+    <a class="cv-download-btn" href="CV_Noel_Adrian_Schulz.pdf" download>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span data-en="Download CV" data-de="Lebenslauf herunterladen">Download CV</span>
+    </a>
   </div>
 
   <!-- EXPERIENCE -->
@@ -526,9 +601,10 @@ footer {
     <div class="exp-item">
       <div class="exp-role">Real Estate Sales Setter</div>
       <div class="exp-period">11/2025 – 07/2026</div>
-      <div class="exp-company">DG Homes Real Estate Broker LLC · Dubai, UAE</div>
+      <div class="exp-location">Dubai, United Arab Emirates</div>
+      <div class="exp-company">DG Homes Real Estate Broker LLC</div>
       <ul class="exp-bullets">
-        <li data-en="Qualified and advised DACH-based investors on off-plan and secondary market properties in Dubai and Abu Dhabi" data-de="Qualifizierung und Beratung von DACH-Investoren zu Off-Plan- und Sekundärmarktobjekten in Dubai und Abu Dhabi">Qualified and advised DACH-based investors on off-plan and secondary market properties in Dubai and Abu Dhabi</li>
+        <li data-en="Qualified and initially advised DACH-based investors on end-user and investment property opportunities in Dubai and Abu Dhabi, spanning off-plan and secondary market segments" data-de="Qualifizierung und Erstberatung von DACH-Investoren zu Eigennutzer- und Investitionsobjekten in Dubai und Abu Dhabi, sowohl Off-Plan als auch im Sekundärmarkt">Qualified and initially advised DACH-based investors on end-user and investment property opportunities in Dubai and Abu Dhabi, spanning off-plan and secondary market segments</li>
         <li data-en="Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)" data-de="Betreuung von 500+ Interessenten; Weitergabe von 160+ qualifizierten Leads (Gesamtvolumen AED 40M+)">Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)</li>
         <li data-en="Supported cross-selling across Property Management, Legal Advisory, and Mortgage Financing" data-de="Cross-Selling in Property Management, Rechtsberatung und Hypothekenfinanzierung">Supported cross-selling across Property Management, Legal Advisory, and Mortgage Financing</li>
       </ul>
@@ -537,18 +613,19 @@ footer {
     <div class="exp-item">
       <div class="exp-role" data-en="Dual Study Program – Business Administration & Financial Services" data-de="Dualer Student – BWL-Finanzdienstleistungen">Dual Study Program – Business Administration & Financial Services</div>
       <div class="exp-period">08/2022 – 09/2025</div>
-      <div class="exp-company">Volksbank Dreiländereck eG · Lörrach, Germany</div>
+      <div class="exp-location">Lörrach, Germany</div>
+      <div class="exp-company">Volksbank Dreiländereck eG</div>
       <ul class="exp-bullets">
-        <li data-en="Worked across private and corporate client advisory, real estate and mortgage financing (Baufinanzierung), cross-border banking (D/CH/F), credit, controlling, payments, compliance, and sales management" data-de="Tätig in Privat- und Firmenkundenberatung, Immobilien inkl. Baufinanzierungsberatung, Grenzgängerberatung (D/CH/F), Kredit, Controlling, Zahlungsverkehr, Compliance und Vertriebssteuerung">Worked across private and corporate client advisory, real estate and mortgage financing (Baufinanzierung), cross-border banking (D/CH/F), credit, controlling, payments, compliance, and sales management</li>
-        <li data-en="Further stations in KundenDialogCenter, Internal Audit, and Organisation" data-de="Weitere Stationen in KundenDialogCenter, Interner Revision und Organisation">Further stations in KundenDialogCenter, Internal Audit, and Organisation</li>
-        <li data-en="Wrote academic papers on real estate topics with direct relevance to the bank's business — see Projects" data-de="Verfasste akademische Arbeiten zu immobilienwirtschaftlichen Themen mit direktem Unternehmensbezug – siehe Projekte">Wrote academic papers on real estate topics with direct relevance to the bank's business — see Projects</li>
+        <li data-en="Gained practical experience in Private and Corporate Client Advisory, Mortgage Financing and cross-border banking operations" data-de="Praktische Erfahrungen in Privat- und Firmenkundenberatung, Baufinanzierung und grenzüberschreitendem Bankgeschäft">Gained practical experience in Private and Corporate Client Advisory, Mortgage Financing and cross-border banking operations</li>
+        <li data-en="Completed a structured rotation across Sales Management, Corporate Banking, Credit, Controlling and Payments" data-de="Strukturierte Rotation durch Vertriebssteuerung, Firmenkundengeschäft, Kredit, Controlling und Zahlungsverkehr">Completed a structured rotation across Sales Management, Corporate Banking, Credit, Controlling and Payments</li>
       </ul>
     </div>
 
     <div class="exp-item">
       <div class="exp-role" data-en="Internship – Retail Banking" data-de="Praktikum – Privatkundengeschäft">Internship – Retail Banking</div>
       <div class="exp-period">08/2021 – 09/2021</div>
-      <div class="exp-company">Deutsche Bank AG · Rheinfelden, Germany</div>
+      <div class="exp-location">Rheinfelden, Germany</div>
+      <div class="exp-company">Deutsche Bank AG</div>
       <ul class="exp-bullets">
         <li data-en="Gained exposure to day-to-day banking operations and private client advisory in a retail branch" data-de="Einblick in Tagesgeschäft und Privatkundenberatung in einer Filiale">Gained exposure to day-to-day banking operations and private client advisory in a retail branch</li>
       </ul>
@@ -562,15 +639,17 @@ footer {
     <div class="edu-item">
       <div class="edu-degree">Master of Science in Real Estate</div>
       <div class="edu-period">09/2026 – 09/2028</div>
-      <div class="edu-school">HSLU – Lucerne University of Applied Sciences · Rotkreuz, Switzerland</div>
+      <div class="edu-school">HSLU – Lucerne University of Applied Sciences</div>
+      <div class="edu-location">Rotkreuz, Switzerland</div>
       <p class="edu-detail" data-en="AACSB-accredited · 90 ECTS · Taught in English · Modules include: Real Estate Asset Management, Real Estate Investment &amp; Finance, Real Estate Development, Swiss Real Estate Markets, Macroeconomics and Financial Markets, Quantitative &amp; Qualitative Research Methods" data-de="AACSB-akkreditiert · 90 ECTS · Lehrsprache Englisch · Module u. a.: Real Estate Asset Management, Real Estate Investment &amp; Finance, Real Estate Development, Swiss Real Estate Markets, Makroökonomie und Finanzmärkte, Quantitative &amp; Qualitative Forschungsmethoden">AACSB-accredited · 90 ECTS · Taught in English · Modules include: Real Estate Asset Management, Real Estate Investment &amp; Finance, Real Estate Development, Swiss Real Estate Markets, Macroeconomics and Financial Markets, Quantitative &amp; Qualitative Research Methods</p>
     </div>
 
     <div class="edu-item">
       <div class="edu-degree" data-en="Bachelor of Arts – Business Administration & Financial Services" data-de="Bachelor of Arts – BWL-Finanzdienstleistungen">Bachelor of Arts – Business Administration & Financial Services</div>
       <div class="edu-period">10/2022 – 09/2025</div>
-      <div class="edu-school">DHBW – Baden-Württemberg Cooperative State University · Lörrach, Germany</div>
-      <p class="edu-detail" data-en="Overall grade: 2.0 (ECTS Grade B) · Modules include: Portfoliomanagement (1.5), Kreditgeschäft (1.4), Sustainable Finance (1.4), Beratungs- und Vertriebskompetenz (2.4), Volkswirtschaftslehre (1.5), Digitale Datenanalyse (1.9)" data-de="Gesamtnote: 2,0 (ECTS Note B) · Module u. a.: Portfoliomanagement (1,5), Kreditgeschäft (1,4), Sustainable Finance (1,4), Beratungs- und Vertriebskompetenz (2,4), Volkswirtschaftslehre (1,5), Digitale Datenanalyse (1,9)">Overall grade: 2.0 (ECTS Grade B) · Modules include: Portfoliomanagement (1.5), Kreditgeschäft (1.4), Sustainable Finance (1.4), Beratungs- und Vertriebskompetenz (2.4), Volkswirtschaftslehre (1.5), Digitale Datenanalyse (1.9)</p>
+      <div class="edu-school">DHBW – Baden-Württemberg Cooperative State University</div>
+      <div class="edu-location">Lörrach, Germany</div>
+      <p class="edu-detail" data-en="Overall grade: 2.0 DE · Core modules: Portfolio Management, Sustainable Finance, Credit Business, Accounting and Taxation, Law, Data Analysis" data-de="Gesamtnote: 2,0 · Kernmodule: Portfoliomanagement, Sustainable Finance, Kreditgeschäft, Buchführung und Steuern, Recht, Datenanalyse">Overall grade: 2.0 DE · Core modules: Portfolio Management, Sustainable Finance, Credit Business, Accounting and Taxation, Law, Data Analysis</p>
     </div>
   </section>
 
@@ -760,5 +839,3 @@ footer {
     if (saved && saved !== 'en') applyLang(saved);
   } catch(e) {}
 </script>
-
-</body></html>
