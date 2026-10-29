@@ -113,6 +113,7 @@ body::before {
 .page-inner {
   max-width: 860px;
   margin: 0 auto;
+  padding: 0 24px;
 }
 
 /* HERO */
@@ -165,25 +166,43 @@ body::before {
   font-weight: 500;
 }
 
-.cv-download-btn {
+.cv-download-btn, .cert-download-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: var(--accent);
-  color: #fff;
+  gap: 7px;
+  padding: 7px 14px;
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   text-decoration: none;
   border-radius: 6px;
-  border: none;
   cursor: pointer;
-  transition: background 0.2s;
   letter-spacing: 0.02em;
+  transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.cv-download-btn {
+  margin-top: 20px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  box-shadow: none;
 }
 .cv-download-btn:hover { background: #122a52; }
+.cert-download-btn {
+  margin-top: 14px;
+  padding: 7px 14px;
+  font-size: 12px;
+  width: fit-content;
+  background: var(--accent-light);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgba(26,58,107,0.06);
+}
+.cert-download-btn:hover {
+  background: #cfddf5;
+  border-color: #b0c4e0;
+  box-shadow: 0 3px 10px rgba(26,58,107,0.13);
+}
 .cv-download-btn svg { flex-shrink: 0; }
 
 .hero-tags {
@@ -204,8 +223,11 @@ body::before {
 
 /* SECTIONS */
 section {
-  padding: 64px 0;
+  padding: 64px 24px;
   border-bottom: 1px solid var(--border);
+  max-width: 860px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 section:last-of-type { border-bottom: none; }
@@ -609,6 +631,10 @@ footer {
         <li data-en="Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)" data-de="Betreuung von 500+ Interessenten; Weitergabe von 160+ qualifizierten Leads (Gesamtvolumen AED 40M+)">Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)</li>
         <li data-en="Supported cross-selling across Property Management, Legal Advisory, and Mortgage Financing" data-de="Cross-Selling in Property Management, Rechtsberatung und Hypothekenfinanzierung">Supported cross-selling across Property Management, Legal Advisory, and Mortgage Financing</li>
       </ul>
+      <a class="cert-download-btn" href="WorkCertificate_NoelSchulz_DGHomesRealEstate.pdf" download>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-en="Download Work Certificate" data-de="Arbeitszeugnis herunterladen">Download Work Certificate</span>
+      </a>
     </div>
 
     <div class="exp-item">
@@ -620,6 +646,10 @@ footer {
         <li data-en="Gained practical experience in Private and Corporate Client Advisory, Mortgage Financing and cross-border banking operations" data-de="Praktische Erfahrungen in Privat- und Firmenkundenberatung, Baufinanzierung und grenzüberschreitendem Bankgeschäft">Gained practical experience in Private and Corporate Client Advisory, Mortgage Financing and cross-border banking operations</li>
         <li data-en="Completed a structured rotation across Sales Management, Corporate Banking, Credit, Controlling and Payments" data-de="Strukturierte Rotation durch Vertriebssteuerung, Firmenkundengeschäft, Kredit, Controlling und Zahlungsverkehr">Completed a structured rotation across Sales Management, Corporate Banking, Credit, Controlling and Payments</li>
       </ul>
+      <a class="cert-download-btn" href="WorkCertificate_NoelSchulz_VolksbankDreilaendereck.pdf" download>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-en="Download Work Certificate" data-de="Arbeitszeugnis herunterladen">Download Work Certificate</span>
+      </a>
     </div>
 
     <div class="exp-item">
@@ -630,6 +660,10 @@ footer {
       <ul class="exp-bullets">
         <li data-en="Gained exposure to day-to-day banking operations and private client advisory in a retail branch" data-de="Einblick in Tagesgeschäft und Privatkundenberatung in einer Filiale">Gained exposure to day-to-day banking operations and private client advisory in a retail branch</li>
       </ul>
+      <a class="cert-download-btn" href="InternshipCertificate_NoelSchulz_DeutscheBank.pdf" download>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span data-en="Download Work Certificate" data-de="Arbeitszeugnis herunterladen">Download Work Certificate</span>
+      </a>
     </div>
   </section>
 
