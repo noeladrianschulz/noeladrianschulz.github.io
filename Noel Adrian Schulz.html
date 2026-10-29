@@ -1,0 +1,764 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Noel Adrian Schulz</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap">
+
+<style>
+/* Layout: single-column with full-width hero, card sections, sticky nav */
+:root {
+  --bg: #F5F7FA;
+  --bg-alt: #EDF0F5;
+  --fg: #1A2440;
+  --fg-muted: #5A6A8A;
+  --accent: #1A3A6B;
+  --accent-light: #DCE8F8;
+  --border: #D0D8E8;
+  --card: #FFFFFF;
+  color-scheme: light;
+}
+
+
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+/* NAV */
+nav {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  padding: 0 max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 56px;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 200;
+  background: var(--bg);
+}
+
+.nav-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--fg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+
+.nav-links a:hover { color: var(--fg); background: var(--bg-alt); }
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.lang-btn, .theme-btn {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.lang-btn:hover, .theme-btn:hover { color: var(--fg); background: var(--border); }
+
+/* MAIN WRAPPER */
+.page-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* HERO */
+.hero {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(38px, 7vw, 64px);
+  font-weight: 500;
+  line-height: 1.1;
+  text-wrap: balance;
+  color: var(--fg);
+  margin-bottom: 24px;
+}
+
+.hero-summary {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--fg-muted);
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 4px;
+  padding: 4px 10px;
+  letter-spacing: 0.02em;
+}
+
+/* SECTIONS */
+section {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-of-type { border-bottom: none; }
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+
+/* EXPERIENCE */
+.exp-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 24px;
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+}
+
+.exp-item:first-of-type { border-top: none; padding-top: 0; }
+
+.exp-role {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--fg);
+  grid-column: 1;
+}
+
+.exp-period {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: start;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.exp-company {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  grid-column: 1;
+  margin-bottom: 10px;
+}
+
+.exp-bullets {
+  grid-column: 1 / -1;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.exp-bullets li {
+  font-size: 14px;
+  color: var(--fg-muted);
+  padding-left: 16px;
+  position: relative;
+}
+
+.exp-bullets li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* EDUCATION */
+.edu-item {
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 24px;
+}
+
+.edu-item:first-of-type { border-top: none; padding-top: 0; }
+
+.edu-degree {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--fg);
+  grid-column: 1;
+}
+
+.edu-period {
+  font-size: 12px;
+  color: var(--fg-muted);
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: start;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.edu-school {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  grid-column: 1;
+}
+
+.edu-detail {
+  font-size: 13px;
+  color: var(--fg-muted);
+  grid-column: 1 / -1;
+  margin-top: 6px;
+}
+
+/* PROJECTS */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-type {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.project-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--fg);
+  line-height: 1.35;
+}
+
+.project-desc {
+  font-size: 13px;
+  color: var(--fg-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.project-result {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 4px;
+  padding: 4px 8px;
+  align-self: start;
+}
+
+/* SKILLS */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 700px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.skill-group-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 10px;
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.skill-list li {
+  font-size: 14px;
+  color: var(--fg);
+}
+
+/* INTERESTS */
+.interests-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.interest-chip {
+  font-size: 13px;
+  color: var(--fg);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+
+/* CONTACT */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.contact-item {
+  background: var(--bg-alt);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.contact-value {
+  font-size: 14px;
+  color: var(--fg);
+  word-break: break-all;
+}
+
+.contact-value a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.contact-value a:hover { text-decoration: underline; }
+
+.copy-btn {
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 8px;
+  cursor: pointer;
+  align-self: start;
+  transition: color 0.15s;
+}
+
+.copy-btn:hover { color: var(--fg); }
+
+/* FOOTER */
+footer {
+  padding: 32px 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-name {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 14px;
+  color: var(--fg-muted);
+}
+
+.footer-note {
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .exp-item, .edu-item {
+    grid-template-columns: 1fr;
+  }
+  .exp-period, .edu-period {
+    grid-column: 1;
+    grid-row: auto;
+    order: -1;
+    margin-bottom: 4px;
+  }
+  nav { padding: 0 16px; }
+  .nav-links { display: none; }
+  .hero { padding: 48px 0 40px; }
+  section { padding: 48px 0; }
+  footer { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; }
+}
+
+/* Hidden lang content */
+[data-de], [data-en] {}
+</style>
+
+<nav>
+  <a href="#" class="nav-name">Noel Adrian Schulz</a>
+  <div class="nav-links">
+    <a href="#experience" data-nav="experience">Experience</a>
+    <a href="#education" data-nav="education">Education</a>
+    <a href="#projects" data-nav="projects">Projects</a>
+    <a href="#skills" data-nav="skills">Skills</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+  </div>
+  <div class="nav-controls">
+    <button class="lang-btn" id="langToggle">DE</button>
+
+  </div>
+</nav>
+
+<div class="page-inner">
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow" data-en="Real Estate · Finance · Strategy" data-de="Immobilien · Finanzen · Strategie">Real Estate · Finance · Strategy</p>
+    <h1 class="hero-name">Noel Adrian<br>Schulz</h1>
+    <p class="hero-summary" data-en="Background in banking and real estate — from mortgage financing and client advisory at a cooperative bank to property sales in Dubai. Currently studying MSc Real Estate at HSLU Lucerne. RICS Student Member." data-de="Hintergrund in Banking und Immobilien — von Baufinanzierung und Kundenberatung bei einer Genossenschaftsbank bis zum Immobilienverkauf in Dubai. Derzeit im MSc Real Estate an der HSLU Luzern. RICS Student Member.">
+      Background in banking and real estate — from mortgage financing and client advisory at a cooperative bank to property sales in Dubai. Currently studying MSc Real Estate at HSLU Lucerne. RICS Student Member.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Asset Management</span>
+      <span class="tag">Portfolio Management</span>
+      <span class="tag">Real Estate Finance</span>
+      <span class="tag">Investment Advisory</span>
+      <span class="tag">RICS Student Member</span>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <p class="section-label" data-en="Professional Experience" data-de="Berufserfahrung">Professional Experience</p>
+
+    <div class="exp-item">
+      <div class="exp-role">Real Estate Sales Setter</div>
+      <div class="exp-period">11/2025 – 07/2026</div>
+      <div class="exp-company">DG Homes Real Estate Broker LLC · Dubai, UAE</div>
+      <ul class="exp-bullets">
+        <li data-en="Qualified and advised DACH-based investors on off-plan and secondary market properties in Dubai and Abu Dhabi" data-de="Qualifizierung und Beratung von DACH-Investoren zu Off-Plan- und Sekundärmarktobjekten in Dubai und Abu Dhabi">Qualified and advised DACH-based investors on off-plan and secondary market properties in Dubai and Abu Dhabi</li>
+        <li data-en="Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)" data-de="Betreuung von 500+ Interessenten; Weitergabe von 160+ qualifizierten Leads (Gesamtvolumen AED 40M+)">Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)</li>
+        <li data-en="Supported cross-selling across Property Management, Legal Advisory, and Mortgage Financing" data-de="Cross-Selling in Property Management, Rechtsberatung und Hypothekenfinanzierung">Supported cross-selling across Property Management, Legal Advisory, and Mortgage Financing</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role" data-en="Dual Study Program – Business Administration & Financial Services" data-de="Dualer Student – BWL-Finanzdienstleistungen">Dual Study Program – Business Administration & Financial Services</div>
+      <div class="exp-period">08/2022 – 09/2025</div>
+      <div class="exp-company">Volksbank Dreiländereck eG · Lörrach, Germany</div>
+      <ul class="exp-bullets">
+        <li data-en="Worked across private and corporate client advisory, real estate and mortgage financing (Baufinanzierung), cross-border banking (D/CH/F), credit, controlling, payments, compliance, and sales management" data-de="Tätig in Privat- und Firmenkundenberatung, Immobilien inkl. Baufinanzierungsberatung, Grenzgängerberatung (D/CH/F), Kredit, Controlling, Zahlungsverkehr, Compliance und Vertriebssteuerung">Worked across private and corporate client advisory, real estate and mortgage financing (Baufinanzierung), cross-border banking (D/CH/F), credit, controlling, payments, compliance, and sales management</li>
+        <li data-en="Further stations in KundenDialogCenter, Internal Audit, and Organisation" data-de="Weitere Stationen in KundenDialogCenter, Interner Revision und Organisation">Further stations in KundenDialogCenter, Internal Audit, and Organisation</li>
+        <li data-en="Wrote academic papers on real estate topics with direct relevance to the bank's business — see Projects" data-de="Verfasste akademische Arbeiten zu immobilienwirtschaftlichen Themen mit direktem Unternehmensbezug – siehe Projekte">Wrote academic papers on real estate topics with direct relevance to the bank's business — see Projects</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-role" data-en="Internship – Retail Banking" data-de="Praktikum – Privatkundengeschäft">Internship – Retail Banking</div>
+      <div class="exp-period">08/2021 – 09/2021</div>
+      <div class="exp-company">Deutsche Bank AG · Rheinfelden, Germany</div>
+      <ul class="exp-bullets">
+        <li data-en="Gained exposure to day-to-day banking operations and private client advisory in a retail branch" data-de="Einblick in Tagesgeschäft und Privatkundenberatung in einer Filiale">Gained exposure to day-to-day banking operations and private client advisory in a retail branch</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="section-label" data-en="Education" data-de="Ausbildung">Education</p>
+
+    <div class="edu-item">
+      <div class="edu-degree">Master of Science in Real Estate</div>
+      <div class="edu-period">09/2026 – 09/2028</div>
+      <div class="edu-school">HSLU – Lucerne University of Applied Sciences · Rotkreuz, Switzerland</div>
+      <p class="edu-detail" data-en="AACSB-accredited · 90 ECTS · Taught in English · Modules include: Real Estate Asset Management, Real Estate Investment &amp; Finance, Real Estate Development, Swiss Real Estate Markets, Macroeconomics and Financial Markets, Quantitative &amp; Qualitative Research Methods" data-de="AACSB-akkreditiert · 90 ECTS · Lehrsprache Englisch · Module u. a.: Real Estate Asset Management, Real Estate Investment &amp; Finance, Real Estate Development, Swiss Real Estate Markets, Makroökonomie und Finanzmärkte, Quantitative &amp; Qualitative Forschungsmethoden">AACSB-accredited · 90 ECTS · Taught in English · Modules include: Real Estate Asset Management, Real Estate Investment &amp; Finance, Real Estate Development, Swiss Real Estate Markets, Macroeconomics and Financial Markets, Quantitative &amp; Qualitative Research Methods</p>
+    </div>
+
+    <div class="edu-item">
+      <div class="edu-degree" data-en="Bachelor of Arts – Business Administration & Financial Services" data-de="Bachelor of Arts – BWL-Finanzdienstleistungen">Bachelor of Arts – Business Administration & Financial Services</div>
+      <div class="edu-period">10/2022 – 09/2025</div>
+      <div class="edu-school">DHBW – Baden-Württemberg Cooperative State University · Lörrach, Germany</div>
+      <p class="edu-detail" data-en="Overall grade: 2.0 (ECTS Grade B) · Modules include: Portfoliomanagement (1.5), Kreditgeschäft (1.4), Sustainable Finance (1.4), Beratungs- und Vertriebskompetenz (2.4), Volkswirtschaftslehre (1.5), Digitale Datenanalyse (1.9)" data-de="Gesamtnote: 2,0 (ECTS Note B) · Module u. a.: Portfoliomanagement (1,5), Kreditgeschäft (1,4), Sustainable Finance (1,4), Beratungs- und Vertriebskompetenz (2,4), Volkswirtschaftslehre (1,5), Digitale Datenanalyse (1,9)">Overall grade: 2.0 (ECTS Grade B) · Modules include: Portfoliomanagement (1.5), Kreditgeschäft (1.4), Sustainable Finance (1.4), Beratungs- und Vertriebskompetenz (2.4), Volkswirtschaftslehre (1.5), Digitale Datenanalyse (1.9)</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="section-label" data-en="Projects" data-de="Projekte">Projects</p>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-type" data-en="Bachelor Thesis · Grade 1.3" data-de="Bachelorarbeit · Note 1,3">Bachelor Thesis · Grade 1.3</div>
+        <div class="project-title" data-en="Private Real Estate Portfolio Management in Private Banking" data-de="Private Real Estate Portfolio Management im Private Banking">Private Real Estate Portfolio Management in Private Banking</div>
+        <div class="project-desc" data-en="Analyzed existing advisory structures and client portfolios at Volksbank Dreiländereck eG to develop advisory and compensation models for a private real estate portfolio management offering." data-de="Analyse bestehender Beratungsstrukturen und Kundenportfolios bei der Volksbank Dreiländereck eG zur Entwicklung von Beratungs- und Vergütungsansätzen für ein Private Real Estate Portfolio Management.">Analyzed existing advisory structures and client portfolios at Volksbank Dreiländereck eG to develop advisory and compensation models for a private real estate portfolio management offering.</div>
+        <div class="project-result" data-en="Revenue potential: up to EUR 480K p.a." data-de="Ertragspotenzial: bis zu EUR 480K p.a.">Revenue potential: up to EUR 480K p.a.</div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-type" data-en="Project Assignment" data-de="Projektarbeit">Project Assignment</div>
+        <div class="project-title" data-en="Energy-Efficient Renovation Potential in Residential Real Estate" data-de="Energetisches Sanierungspotenzial im Wohnimmobilienbestand">Energy-Efficient Renovation Potential in Residential Real Estate</div>
+        <div class="project-desc" data-en="Analyzed the residential property stock requiring energy-efficient renovation in the Volksbank Dreiländereck market area, identifying assets with untapped financing potential and modelling interest income scenarios." data-de="Analyse des sanierungsbedürftigen Wohnimmobilienbestands im Marktgebiet der Volksbank Dreiländereck eG; Identifizierung von Objekten mit ungenutztem Finanzierungspotenzial und Modellierung von Zinsertragsszenarios.">Analyzed the residential property stock requiring energy-efficient renovation in the Volksbank Dreiländereck market area, identifying assets with untapped financing potential and modelling interest income scenarios.</div>
+        <div class="project-result" data-en="670 assets identified" data-de="670 Objekte identifiziert">670 assets identified</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label" data-en="Skills & Languages" data-de="Kenntnisse & Sprachen">Skills & Languages</p>
+    <div class="skills-grid">
+
+      <div>
+        <div class="skill-group-label" data-en="Languages" data-de="Sprachen">Languages</div>
+        <ul class="skill-list">
+          <li data-en="German — Native" data-de="Deutsch — Muttersprache">German — Native</li>
+          <li data-en="English — C2 (Cambridge CAE, Grade A)" data-de="Englisch — C2 (Cambridge CAE, Note A)">English — C2 (Cambridge CAE, Grade A)</li>
+          <li data-en="French — B1" data-de="Französisch — B1">French — B1</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="skill-group-label" data-en="Competencies" data-de="Fachkenntnisse">Competencies</div>
+        <ul class="skill-list">
+          <li data-en="Real Estate Investment Analysis" data-de="Immobilieninvestitionsanalyse">Real Estate Investment Analysis</li>
+          <li data-en="Portfolio & Asset Management" data-de="Portfolio- & Asset Management">Portfolio & Asset Management</li>
+          <li data-en="Mortgage Financing & Credit" data-de="Hypothekenfinanzierung & Kredit">Mortgage Financing & Credit</li>
+          <li data-en="Financial Modelling & DCF" data-de="Finanzmodellierung & DCF">Financial Modelling & DCF</li>
+          <li data-en="Market Analysis" data-de="Marktanalyse">Market Analysis</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="skill-group-label" data-en="Tools" data-de="Software">Tools</div>
+        <ul class="skill-list">
+          <li>MS Office (advanced)</li>
+          <li>Bloomberg Terminal</li>
+          <li>RStudio (basics)</li>
+          <li>Python (basics)</li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="skill-group-label" data-en="Memberships" data-de="Mitgliedschaften">Memberships</div>
+        <ul class="skill-list">
+          <li>RICS Student Member</li>
+          <li>Basel Running Club</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section>
+    <p class="section-label" data-en="Interests" data-de="Interessen">Interests</p>
+    <div class="interests-row">
+      <span class="interest-chip" data-en="Running" data-de="Laufen">Running</span>
+      <span class="interest-chip" data-en="Swimming" data-de="Schwimmen">Swimming</span>
+      <span class="interest-chip" data-en="Strength Training" data-de="Krafttraining">Strength Training</span>
+      <span class="interest-chip" data-en="Real Estate Markets" data-de="Immobilienmärkte">Real Estate Markets</span>
+      <span class="interest-chip" data-en="Sustainable Finance" data-de="Nachhaltige Finanzen">Sustainable Finance</span>
+      <span class="interest-chip" data-en="Travel" data-de="Reisen">Travel</span>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label" data-en="Contact" data-de="Kontakt">Contact</p>
+    <div class="contact-grid">
+
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <div class="contact-value">noeladrianschulz@outlook.com</div>
+        <button class="copy-btn" data-copy="noeladrianschulz@outlook.com" data-en="Copy" data-de="Kopieren">Copy</button>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-label" data-en="Phone" data-de="Telefon">Phone</div>
+        <div class="contact-value">+41 77 252 1109</div>
+        <button class="copy-btn" data-copy="+41772521109" data-en="Copy" data-de="Kopieren">Copy</button>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value"><a href="https://www.linkedin.com/in/noel-adrian-schulz" target="_blank">linkedin.com/in/noel-adrian-schulz</a></div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-label" data-en="Location" data-de="Standort">Location</div>
+        <div class="contact-value" data-en="Dornach, Switzerland" data-de="Dornach, Schweiz">Dornach, Switzerland</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <p class="section-label" data-en="About" data-de="Über mich">About</p>
+    <div class="edu-item" style="border-top: none; padding-top: 0;">
+      <div class="edu-degree">Noel Adrian Schulz</div>
+      <div class="edu-school" data-en="MSc Real Estate · HSLU Lucerne · RICS Student Member" data-de="MSc Real Estate · HSLU Luzern · RICS Student Member">MSc Real Estate · HSLU Lucerne · RICS Student Member</div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Language toggle
+  let currentLang = 'en';
+
+  function applyLang(lang) {
+    document.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = lang === 'de' ? el.getAttribute('data-de') : el.getAttribute('data-en');
+    });
+    document.getElementById('langToggle').textContent = lang === 'de' ? 'EN' : 'DE';
+    // Nav links
+    const navLabels = {
+      experience: { en: 'Experience', de: 'Erfahrung' },
+      education:  { en: 'Education',  de: 'Ausbildung' },
+      projects:   { en: 'Projects',   de: 'Projekte' },
+      skills:     { en: 'Skills',     de: 'Kenntnisse' },
+      contact:    { en: 'Contact',    de: 'Kontakt' }
+    };
+    document.querySelectorAll('[data-nav]').forEach(a => {
+      const key = a.getAttribute('data-nav');
+      if (navLabels[key]) a.textContent = navLabels[key][lang];
+    });
+    currentLang = lang;
+    try { localStorage.setItem('portfolio-lang', lang); } catch(e) {}
+  }
+
+  document.getElementById('langToggle').addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'de' : 'en');
+  });
+
+  // Theme toggle
+  const root = document.documentElement;
+  let currentTheme = 'system';
+  try { currentTheme = localStorage.getItem('portfolio-theme') || 'system'; } catch(e) {}
+  if (currentTheme !== 'system') root.setAttribute('data-theme', currentTheme);
+
+  // Theme toggle removed
+
+  // Copy buttons
+  document.querySelectorAll('.copy-btn[data-copy]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const text = btn.getAttribute('data-copy');
+      const original = btn.textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = currentLang === 'de' ? 'Kopiert!' : 'Copied!';
+        setTimeout(() => { btn.textContent = currentLang === 'de' ? 'Kopieren' : 'Copy'; }, 1500);
+      }).catch(() => {
+        // fallback: select
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        btn.textContent = currentLang === 'de' ? 'Kopiert!' : 'Copied!';
+        setTimeout(() => { btn.textContent = original; }, 1500);
+      });
+    });
+  });
+
+  // Restore lang
+  try {
+    const saved = localStorage.getItem('portfolio-lang');
+    if (saved && saved !== 'en') applyLang(saved);
+  } catch(e) {}
+</script>
+
+</body></html>
