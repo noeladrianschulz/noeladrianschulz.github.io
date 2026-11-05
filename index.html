@@ -911,14 +911,20 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    align-items: flex-start;
+  }
+  .exp-item > *, .edu-item > * {
+    text-align: left !important;
+    align-self: flex-start !important;
+    white-space: normal !important;
+    grid-column: unset !important;
+    grid-row: unset !important;
   }
   .exp-period, .edu-period {
-    text-align: left;
     font-size: 13px;
     margin-bottom: 2px;
   }
   .exp-location, .edu-location {
-    text-align: left;
     font-size: 13px;
     margin-bottom: 4px;
   }
