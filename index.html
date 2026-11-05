@@ -1,3 +1,5 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Noel Adrian Schulz</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap">
@@ -671,16 +673,21 @@ section:last-of-type { border-bottom: none; }
 
 /* SKILLS */
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-@media (max-width: 700px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.skill-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 4px 24px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
 }
+
+.skill-row:first-of-type { border-top: none; padding-top: 0; }
 
 .skill-group-label {
   font-size: 11px;
@@ -688,19 +695,96 @@ section:last-of-type { border-bottom: none; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--fg-muted);
-  margin-bottom: 10px;
+  padding-top: 2px;
 }
 
 .skill-list {
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 5px;
+  flex-wrap: wrap;
+  gap: 5px 20px;
 }
 
 .skill-list li {
   font-size: 14px;
   color: var(--fg);
+}
+
+@media (max-width: 600px) {
+  .skill-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* EXP MORE INFO PANEL */
+.exp-more-toggle {
+  grid-column: 1 / -1;
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+  align-self: start;
+}
+.exp-more-toggle:hover { color: var(--fg); background: var(--bg-alt); }
+.exp-more-toggle svg { transition: transform 0.2s ease; flex-shrink: 0; }
+.exp-more-toggle.open svg { transform: rotate(180deg); }
+
+.exp-more-panel {
+  grid-column: 1 / -1;
+  display: none;
+  margin-top: 16px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--border);
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+}
+.exp-more-panel.open { display: grid; }
+
+@media (max-width: 600px) {
+  .exp-more-panel { grid-template-columns: 1fr; }
+}
+
+.exp-more-block {}
+.exp-more-block-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 10px;
+}
+.exp-more-desc {
+  font-size: 13px;
+  color: var(--fg-muted);
+  line-height: 1.65;
+  margin-bottom: 0;
+}
+
+/* Learnings chips */
+.exp-learnings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 0;
+}
+.exp-learning-chip {
+  font-size: 12px;
+  color: var(--accent);
+  background: var(--accent-light);
+  border-radius: 20px;
+  padding: 4px 11px;
+  border: 1px solid var(--accent-light);
+  line-height: 1.4;
 }
 
 /* INTERESTS */
@@ -795,20 +879,94 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 600px) {
+  /* Base font bump for mobile readability */
+  body { font-size: 16px; }
+
+  /* Nav */
+  nav { padding: 0 16px; height: 52px; }
+  .nav-links { display: none; }
+  .nav-name { font-size: 15px; }
+  .lang-btn { font-size: 13px; padding: 6px 12px; }
+
+  /* Hero */
+  .hero { padding: 40px 0 36px; }
+  .hero-name { font-size: clamp(32px, 9vw, 48px); margin-bottom: 20px; }
+  .hero-summary { font-size: 15px; gap: 12px; }
+  .hero-tags { gap: 7px; }
+  .tag { font-size: 13px; padding: 5px 11px; }
+  .cv-download-btn { font-size: 14px; padding: 10px 18px; }
+
+  /* Sections */
+  section { padding: 40px 0; }
+  .section-label { font-size: 11px; margin-bottom: 24px; }
+
+  /* Experience & Education — stack to single column */
   .exp-item, .edu-item {
     grid-template-columns: 1fr;
+    gap: 2px;
   }
   .exp-period, .edu-period {
     grid-column: 1;
     grid-row: auto;
     order: -1;
-    margin-bottom: 4px;
+    text-align: left;
+    margin-bottom: 2px;
+    font-size: 13px;
   }
-  nav { padding: 0 16px; }
-  .nav-links { display: none; }
-  .hero { padding: 48px 0 40px; }
-  section { padding: 48px 0; }
-  footer { flex-direction: column; align-items: flex-start; }
+  .exp-location, .edu-location {
+    grid-column: 1;
+    text-align: left;
+    font-size: 13px;
+  }
+  .exp-role { font-size: 17px; }
+  .edu-degree { font-size: 16px; }
+  .exp-bullets li { font-size: 15px; }
+  .cert-download-btn { font-size: 13px; padding: 9px 14px; }
+
+  /* Module grid: 1 column on tiny screens, 2 on medium phones */
+  .edu-modules { grid-template-columns: 1fr; }
+  .edu-mod-list li { font-size: 13px; }
+
+  /* Skills horizontal rows */
+  .skill-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 0; }
+  .skill-list li { font-size: 15px; }
+  .skill-group-label { font-size: 11px; }
+
+  /* Project cards */
+  .projects-grid { grid-template-columns: 1fr; gap: 14px; }
+  .project-title { font-size: 15px; }
+  .project-desc { font-size: 14px; }
+
+  /* Interests */
+  .interests-row { gap: 8px; }
+  .interest-chip { font-size: 14px; padding: 7px 16px; }
+
+  /* Contact */
+  .contact-grid { grid-template-columns: 1fr; gap: 12px; }
+  .contact-value { font-size: 15px; }
+  .copy-btn { font-size: 13px; padding: 5px 10px; }
+
+  /* PDF Modal — full screen on mobile */
+  .pdf-modal-overlay { padding: 0; align-items: flex-end; }
+  .pdf-modal {
+    max-width: 100%;
+    max-height: 92vh;
+    border-radius: 16px 16px 0 0;
+  }
+  .pdf-modal-body iframe { min-height: 60vh; }
+  .pdf-modal-title { font-size: 13px; }
+
+  footer { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  .edu-modules { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
+  .hero { padding: 60px 0 48px; }
+  section { padding: 52px 0; }
+  .pdf-modal-overlay { padding: 16px; }
+  .pdf-modal { max-height: 88vh; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -840,9 +998,9 @@ footer {
   <div class="hero">
     <h1 class="hero-name">Noel Adrian Schulz</h1>
       <ul class="hero-summary">
-      <li data-en="currently pursuing a Master of Science in Real Estate at the Lucerne University of Applied Sciences and Arts (HSLU) - fully taught in english and unique in its kind with strong ties to the swiss real estate sector (RICS)"
-          data-de="Derzeit im Master of Science in Real Estate an der Hochschule Luzern (HSLU) — Lehrsprache Englisch, einzigartig in seiner Art mit starker Verankerung im Schweizer Immobilienmarkt (RICS)."
-          >currently pursuing a Master of Science in Real Estate at the Lucerne University of Applied Sciences and Arts (HSLU) - fully taught in english and unique in its kind with strong ties to the swiss real estate sector (RICS)</li>
+      <li data-en="currently pursuing a Master of Science in Real Estate at the Lucerne University of Applied Sciences and Arts (HSLU) - fully taught in English and with strong ties to the Swiss real estate sector (RICS)"
+          data-de="Derzeit im Master of Science in Real Estate an der Hochschule Luzern (HSLU) — Lehrsprache Englisch, mit starker Verankerung im Schweizer Immobilienmarkt (RICS)."
+          >currently pursuing a Master of Science in Real Estate at the Lucerne University of Applied Sciences and Arts (HSLU) - fully taught in English and with strong ties to the Swiss real estate sector (RICS)</li>
       <li data-en="previous full time working experience of 9 months in a real estate company in Dubai focused on DACH-Investors after exceling in an initial internship - managing a pipeline of &gt;500 prospects, passing 160 hot leads to closing brokers and thereby contributing to a transaction volume of 40+ Mio. AED"
           data-de="9 Monate Vollzeiterfahrung in einem auf DACH-Investoren spezialisierten Immobilienunternehmen in Dubai nach erfolgreichem Praktikum — Pipeline von über 500 Prospects, 160 weitergeleitete Hot Leads und Beitrag zu einem Transaktionsvolumen von über 40 Mio. AED."
           >previous full time working experience of 9 months in a real estate company in Dubai focused on DACH-Investors after exceling in an initial internship - managing a pipeline of &gt;500 prospects, passing 160 hot leads to closing brokers and thereby contributing to a transaction volume of 40+ Mio. AED</li>
@@ -853,8 +1011,7 @@ footer {
     <div class="hero-tags">
       <span class="tag" data-en="Master of Science Real Estate" data-de="Master of Science Real Estate">Master of Science Real Estate</span>
       <span class="tag" data-en="UAE and Swiss Real Estate Sector" data-de="UAE und Schweizer Immobilienmarkt">UAE and Swiss Real Estate Sector</span>
-      <span class="tag" data-en="Passion for Real Estate Portfolio Management" data-de="Leidenschaft für Real Estate Portfolio Management">Passion for Real Estate Portfolio Management</span>
-      <span class="tag" data-en="Passion for Real Estate Development" data-de="Leidenschaft für Real Estate Development">Passion for Real Estate Development</span>
+<span class="tag" data-en="Passion for Real Estate Development" data-de="Leidenschaft für Real Estate Development">Passion for Real Estate Development</span>
       <span class="tag">RICS Student Member</span>
     </div>
     <button class="cv-download-btn" onclick="openPdfModal('CV_Noel_Adrian_Schulz.pdf','Curriculum Vitae – Noel Adrian Schulz')">
@@ -882,6 +1039,30 @@ footer {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span data-en="View Work Certificate" data-de="Arbeitszeugnis ansehen">View Work Certificate</span>
       </button>
+
+      <button class="exp-more-toggle" onclick="toggleMore(this)" aria-expanded="false">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <span data-en="More about DG Homes" data-de="Mehr zu DG Homes">More about DG Homes</span>
+      </button>
+
+      <div class="exp-more-panel">
+        <div class="exp-more-block">
+          <div class="exp-more-block-label" data-en="About the Company" data-de="Über das Unternehmen">About the Company</div>
+          <p class="exp-more-desc" data-en="DG Homes is a vertically integrated real estate brokerage specialising in DACH-based investors. The company operates with a client base of 2,500+ and maintains its own affiliate developer (off-plan projects), in-house legal advisory, and a property management division — giving me direct exposure to every stage of the real estate value chain: from first contact through legal structuring, acquisition, and ongoing asset management."
+             data-de="DG Homes ist ein vertikal integrierter Immobilienmakler mit Spezialisierung auf DACH-Investoren. Das Unternehmen betreut über 2.500 Kunden und verfügt über einen eigenen Partnerbauträger (Off-Plan-Projekte), eine hausinterne Anwaltskanzlei sowie eine Property-Management-Abteilung — was mir unmittelbare Einblicke in alle Stufen der Immobilienwertschöpfungskette ermöglichte: vom Erstkontakt über juristische Strukturierung und Transaktion bis hin zum laufenden Asset Management."
+             >DG Homes is a vertically integrated real estate brokerage specialising in DACH-based investors. The company operates with a client base of 2,500+ and maintains its own affiliate developer (off-plan projects), in-house legal advisory, and a property management division — giving me direct exposure to every stage of the real estate value chain: from first contact through legal structuring, acquisition, and ongoing asset management.</p>
+        </div>
+        <div class="exp-more-block">
+          <div class="exp-more-block-label" data-en="Key Learnings" data-de="Wichtigste Erkenntnisse">Key Learnings</div>
+          <div class="exp-learnings">
+            <span class="exp-learning-chip" data-en="Navigating a regional crisis (Iran conflict)" data-de="Regionale Krise navigieren (Iran-Konflikt)">Navigating a regional crisis (Iran conflict)</span>
+            <span class="exp-learning-chip" data-en="Overcoming challenges of working abroad" data-de="Herausforderungen im Ausland meistern">Overcoming challenges of working abroad</span>
+            <span class="exp-learning-chip" data-en="Self-management in a results-driven environment" data-de="Selbstmanagement im ergebnisorientierten Umfeld">Self-management in a results-driven environment</span>
+            <span class="exp-learning-chip" data-en="Cross-cultural sales communication" data-de="Interkulturelle Vertriebskommunikation">Cross-cultural sales communication</span>
+            <span class="exp-learning-chip" data-en="Value chain thinking in real estate" data-de="Wertschöpfungskettendenken in Immobilien">Value chain thinking in real estate</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="exp-item">
@@ -897,6 +1078,29 @@ footer {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         <span data-en="View Work Certificate" data-de="Arbeitszeugnis ansehen">View Work Certificate</span>
       </button>
+
+      <button class="exp-more-toggle" onclick="toggleMore(this)" aria-expanded="false">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        <span data-en="More about Volksbank" data-de="Mehr zur Volksbank">More about Volksbank</span>
+      </button>
+
+      <div class="exp-more-panel">
+        <div class="exp-more-block">
+          <div class="exp-more-block-label" data-en="About the Institution" data-de="Über das Institut">About the Institution</div>
+          <p class="exp-more-desc" data-en="Volksbank Dreiländereck eG is a regional cooperative bank at the tri-border area of Germany, Switzerland and France. Beyond its German client base, the bank actively serves Swiss residents and cross-border commuters — offering Swiss mortgage financing and cross-border financial services. This gave me early exposure to international banking regulation and Swiss financial structures, directly relevant to my subsequent career in Switzerland."
+             data-de="Die Volksbank Dreiländereck eG ist eine regionale Genossenschaftsbank im Dreiländereck Deutschland–Schweiz–Frankreich. Neben ihrer deutschen Kundschaft betreut die Bank aktiv Schweizer Kunden sowie Grenzgänger — mit Schweizer Hypothekenfinanzierungen und grenzüberschreitenden Finanzdienstleistungen. Dies ermöglichte mir frühzeitig Einblicke in internationale Bankenregulierung und Schweizer Finanzstrukturen."
+             >Volksbank Dreiländereck eG is a regional cooperative bank at the tri-border area of Germany, Switzerland and France. Beyond its German client base, the bank actively serves Swiss residents and cross-border commuters — offering Swiss mortgage financing and cross-border financial services. This gave me early exposure to international banking regulation and Swiss financial structures, directly relevant to my subsequent career in Switzerland.</p>
+        </div>
+        <div class="exp-more-block">
+          <div class="exp-more-block-label" data-en="Key Learnings" data-de="Wichtigste Erkenntnisse">Key Learnings</div>
+          <div class="exp-learnings">
+            <span class="exp-learning-chip" data-en="Managing branches independently" data-de="Filialen eigenständig geführt">Managing branches independently</span>
+            <span class="exp-learning-chip" data-en="Cross-border banking & Swiss client advisory" data-de="Grenzüberschreitendes Banking & Schweizer Kunden">Cross-border banking & Swiss client advisory</span>
+            <span class="exp-learning-chip" data-en="Full rotation across all banking departments" data-de="Vollständige Rotation aller Bankbereiche">Full rotation across all banking departments</span>
+            <span class="exp-learning-chip" data-en="Integrating academic theory with daily practice" data-de="Akademische Theorie mit Praxis verbinden">Integrating academic theory mit Praxis verbinden</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="exp-item">
@@ -1048,16 +1252,20 @@ footer {
     <p class="section-label" data-en="Skills & Languages" data-de="Kenntnisse & Sprachen">Skills & Languages</p>
     <div class="skills-grid">
 
-      <div>
+      <div class="skill-row">
         <div class="skill-group-label" data-en="Languages" data-de="Sprachen">Languages</div>
         <ul class="skill-list">
           <li data-en="German — Native" data-de="Deutsch — Muttersprache">German — Native</li>
           <li data-en="English — C2 (Cambridge CAE, Grade A)" data-de="Englisch — C2 (Cambridge CAE, Note A)">English — C2 (Cambridge CAE, Grade A)</li>
           <li data-en="French — B1" data-de="Französisch — B1">French — B1</li>
         </ul>
+        <button class="cert-download-btn" style="margin-top:10px;" onclick="openPdfModal('CAE_Certificate_NoelSchulz.pdf','Cambridge CAE Certificate – Noel Adrian Schulz')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-en="View CAE Certificate" data-de="CAE-Zertifikat ansehen">View CAE Certificate</span>
+        </button>
       </div>
 
-      <div>
+      <div class="skill-row">
         <div class="skill-group-label" data-en="Competencies" data-de="Fachkenntnisse">Competencies</div>
         <ul class="skill-list">
           <li data-en="Real Estate Investment Analysis" data-de="Immobilieninvestitionsanalyse">Real Estate Investment Analysis</li>
@@ -1068,7 +1276,7 @@ footer {
         </ul>
       </div>
 
-      <div>
+      <div class="skill-row">
         <div class="skill-group-label" data-en="Tools" data-de="Software">Tools</div>
         <ul class="skill-list">
           <li>MS Office (advanced)</li>
@@ -1078,7 +1286,7 @@ footer {
         </ul>
       </div>
 
-      <div>
+      <div class="skill-row">
         <div class="skill-group-label" data-en="Memberships" data-de="Mitgliedschaften">Memberships</div>
         <ul class="skill-list">
           <li>RICS Student Member</li>
@@ -1132,17 +1340,19 @@ footer {
     </div>
   </section>
 
-  <section id="about">
-    <p class="section-label" data-en="About" data-de="Über mich">About</p>
-    <div class="edu-item" style="border-top: none; padding-top: 0;">
-      <div class="edu-degree">Noel Adrian Schulz</div>
-      <div class="edu-school" data-en="MSc Real Estate · HSLU Lucerne · RICS Student Member" data-de="MSc Real Estate · HSLU Luzern · RICS Student Member">MSc Real Estate · HSLU Lucerne · RICS Student Member</div>
-    </div>
-  </section>
 
 </div>
 
 <script>
+  // Toggle more-info panels
+  function toggleMore(btn) {
+    const panel = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    btn.classList.toggle('open', !isOpen);
+    panel.classList.toggle('open', !isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  }
+
   // Language toggle
   let currentLang = 'en';
 
