@@ -1205,14 +1205,8 @@ footer {
       <div class="edu-location">Lörrach, Germany</div>
       <p class="edu-detail" data-en="Overall grade: 2.0 DE">Overall grade: 2.0 DE</p>
       <ul class="edu-mod-list" style="margin-top: 10px;">
-        <li data-en="Portfolio Management">Portfolio Management</li>
-        <li data-en="Sustainable Finance">Sustainable Finance</li>
-        <li data-en="Credit Business">Credit Business</li>
-        <li data-en="Digital Data Analysis">Digital Data Analysis</li>
-        <li data-en="Consulting & Sales Competence">Consulting & Sales Competence</li>
-        <li data-en="Accounting & Taxation">Accounting & Taxation</li>
-        <li data-en="Business Policy">Business Policy</li>
-        <li data-en="Macroeconomics">Macroeconomics</li>
+        <li>Portfolio Management &amp; Sustainable Finance</li>
+        <li style="color:var(--fg-muted)">Credit Business, Digital Data Analysis, Consulting &amp; Sales Competence, Accounting &amp; Taxation, Business Policy, Macroeconomics</li>
       </ul>
 
       <!-- Projects nested under Bachelor -->
@@ -1245,27 +1239,18 @@ footer {
     <div class="skills-grid">
 
       <div class="skill-row">
-        <div class="skill-group-label" data-en="Languages">Languages</div>
-        <ul class="skill-list">
-          <li data-en="German — Native">German — Native</li>
-          <li data-en="English — C2 (Cambridge CAE, Grade A)">English — C2 (Cambridge CAE, Grade A)</li>
-          <li data-en="French — B1">French — B1</li>
-        </ul>
-        <button class="cert-download-btn" style="margin-top:10px;" onclick="openPdfModal('CAE_Certificate_NoelSchulz.pdf','Cambridge CAE Certificate – Noel Adrian Schulz')">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <span data-en="View CAE Certificate">View CAE Certificate</span>
-        </button>
-      </div>
-
-      <div class="skill-row">
-        <div class="skill-group-label" data-en="Competencies">Competencies</div>
-        <ul class="skill-list">
-          <li data-en="Real Estate Investment Analysis">Real Estate Investment Analysis</li>
-          <li data-en="Portfolio & Asset Management">Portfolio & Asset Management</li>
-          <li data-en="Mortgage Financing & Credit">Mortgage Financing & Credit</li>
-          <li data-en="Financial Modelling & DCF">Financial Modelling & DCF</li>
-          <li data-en="Market Analysis">Market Analysis</li>
-        </ul>
+        <div class="skill-group-label">Languages</div>
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+          <ul class="skill-list" style="flex-direction:column;">
+            <li>German <span style="color:var(--fg-muted);font-size:13px;">Native</span></li>
+            <li>English <span style="color:var(--fg-muted);font-size:13px;">C2 (Cambridge CAE, Grade A)</span></li>
+            <li>French <span style="color:var(--fg-muted);font-size:13px;">B1</span></li>
+          </ul>
+          <button class="cert-download-btn" style="flex-shrink:0;" onclick="openPdfModal('CAE_Certificate_NoelSchulz.pdf','Cambridge CAE Certificate – Noel Adrian Schulz')">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>View CAE Certificate</span>
+          </button>
+        </div>
       </div>
 
       <div class="skill-row">
@@ -1296,9 +1281,10 @@ footer {
       <span class="interest-chip" data-en="Running">Running</span>
       <span class="interest-chip" data-en="Swimming">Swimming</span>
       <span class="interest-chip" data-en="Strength Training">Strength Training</span>
-      <span class="interest-chip" data-en="Real Estate Markets">Real Estate Markets</span>
-      <span class="interest-chip" data-en="Sustainable Finance">Sustainable Finance</span>
-      <span class="interest-chip" data-en="Travel">Travel</span>
+      <span class="interest-chip">UAE Real Estate Market</span>
+      <span class="interest-chip">Swiss Real Estate Market</span>
+      <span class="interest-chip">AI</span>
+      <span class="interest-chip">Guitar (self-taught)</span>
     </div>
   </section>
 
