@@ -201,7 +201,7 @@ body::before {
   border: 1px solid var(--border);
   box-shadow: 0 1px 3px rgba(26,58,107,0.06);
   grid-column: 1 / -1;
-  grid-row: 5;
+  grid-row: 4;
 }
 .cert-download-btn:hover {
   background: #cfddf5;
@@ -364,7 +364,7 @@ section:last-of-type { border-bottom: none; }
   font-weight: 500;
   color: var(--fg);
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 1;
 }
 
 .exp-period {
@@ -395,14 +395,14 @@ section:last-of-type { border-bottom: none; }
   font-weight: 600;
   color: var(--accent);
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 2;
   margin-bottom: 10px;
   align-self: center;
 }
 
 .exp-bullets {
   grid-column: 1 / -1;
-  grid-row: 4;
+  grid-row: 3;
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -440,7 +440,7 @@ section:last-of-type { border-bottom: none; }
   font-weight: 500;
   color: var(--fg);
   grid-column: 1;
-  grid-row: 2;
+  grid-row: 1;
 }
 
 .edu-period {
@@ -469,7 +469,7 @@ section:last-of-type { border-bottom: none; }
   font-weight: 600;
   color: var(--accent);
   grid-column: 1;
-  grid-row: 3;
+  grid-row: 2;
   align-self: center;
 }
 
@@ -728,7 +728,7 @@ section:last-of-type { border-bottom: none; }
 /* EXP MORE INFO PANEL */
 .exp-more-toggle {
   grid-column: 1 / -1;
-  grid-row: 6;
+  grid-row: 5;
   margin-top: 14px;
   display: inline-flex;
   align-items: center;
@@ -750,7 +750,7 @@ section:last-of-type { border-bottom: none; }
 
 .exp-more-panel {
   grid-column: 1 / -1;
-  grid-row: 7;
+  grid-row: 6;
   display: none;
   margin-top: 16px;
   padding-top: 20px;
@@ -921,17 +921,16 @@ footer {
     text-align: left !important;
     align-self: flex-start !important;
     white-space: normal !important;
-    grid-column: unset !important;
-    grid-row: unset !important;
   }
-  .exp-period, .edu-period {
-    font-size: 13px;
-    margin-bottom: 2px;
-  }
-  .exp-location, .edu-location {
-    font-size: 13px;
-    margin-bottom: 4px;
-  }
+  /* Mobile order: period first, then role, company, location */
+  .exp-period, .edu-period { order: 1; font-size: 13px; margin-bottom: 2px; }
+  .exp-role, .edu-degree   { order: 2; }
+  .exp-company, .edu-school { order: 3; }
+  .exp-location, .edu-location { order: 4; font-size: 13px; margin-bottom: 4px; }
+  .exp-bullets, .edu-detail, .edu-modules { order: 5; }
+  .cert-download-btn { order: 6; }
+  .exp-more-toggle { order: 7; }
+  .exp-more-panel { order: 8; }
   .exp-role { font-size: 17px; }
   .edu-degree { font-size: 16px; }
   .exp-bullets li { font-size: 15px; }
@@ -1033,10 +1032,10 @@ footer {
     <p class="section-label" data-en="Professional Experience">Professional Experience</p>
 
     <div class="exp-item">
-      <div class="exp-period">11/2025 – 07/2026</div>
-      <div class="exp-location">Dubai, United Arab Emirates</div>
       <div class="exp-role">Real Estate Sales Setter</div>
+      <div class="exp-period">11/2025 – 07/2026</div>
       <div class="exp-company">DG Homes Real Estate Broker LLC</div>
+      <div class="exp-location">Dubai, United Arab Emirates</div>
       <ul class="exp-bullets">
         <li data-en="Qualified and initially advised DACH-based investors on end-user and investment property opportunities in Dubai and Abu Dhabi, spanning off-plan and secondary market segments">Qualified and initially advised DACH-based investors on end-user and investment property opportunities in Dubai and Abu Dhabi, spanning off-plan and secondary market segments</li>
         <li data-en="Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)">Managed 500+ prospects; passed 160+ qualified leads to closing brokers (total volume AED 40M+)</li>
@@ -1072,10 +1071,10 @@ footer {
     </div>
 
     <div class="exp-item">
-      <div class="exp-period">08/2022 – 09/2025</div>
-      <div class="exp-location">Lörrach, Germany</div>
       <div class="exp-role" data-en="Dual Study Program – Business Administration & Financial Services">Dual Study Program – Business Administration & Financial Services</div>
+      <div class="exp-period">08/2022 – 09/2025</div>
       <div class="exp-company">Volksbank Dreiländereck eG</div>
+      <div class="exp-location">Lörrach, Germany</div>
       <ul class="exp-bullets">
         <li data-en="Gained practical experience in Private and Corporate Client Advisory, Mortgage Financing and cross-border banking operations">Gained practical experience in Private and Corporate Client Advisory, Mortgage Financing and cross-border banking operations</li>
         <li data-en="Completed a structured rotation across Sales Management, Corporate Banking, Credit, Controlling and Payments">Completed a structured rotation across Sales Management, Corporate Banking, Credit, Controlling and Payments</li>
@@ -1109,10 +1108,10 @@ footer {
     </div>
 
     <div class="exp-item">
-      <div class="exp-period">08/2021 – 09/2021</div>
-      <div class="exp-location">Rheinfelden, Germany</div>
       <div class="exp-role" data-en="Internship – Retail Banking">Internship – Retail Banking</div>
+      <div class="exp-period">08/2021 – 09/2021</div>
       <div class="exp-company">Deutsche Bank AG</div>
+      <div class="exp-location">Rheinfelden, Germany</div>
       <ul class="exp-bullets">
         <li data-en="Gained exposure to day-to-day banking operations and private client advisory in a retail branch">Gained exposure to day-to-day banking operations and private client advisory in a retail branch</li>
       </ul>
@@ -1128,8 +1127,8 @@ footer {
     <p class="section-label" data-en="Education">Education</p>
 
     <div class="edu-item">
-      <div class="edu-period">09/2026 – 09/2028</div>
       <div class="edu-degree">Master of Science in Real Estate</div>
+      <div class="edu-period">09/2026 – 09/2028</div>
       <div class="edu-school">HSLU – Lucerne University of Applied Sciences</div>
       <div class="edu-location">Rotkreuz, Switzerland</div>
       <p class="edu-detail" data-en="AACSB-accredited · 90 ECTS · Taught in English">AACSB-accredited · 90 ECTS · Taught in English</p>
@@ -1212,8 +1211,8 @@ footer {
     </div>
 
     <div class="edu-item">
-      <div class="edu-period">10/2022 – 09/2025</div>
       <div class="edu-degree" data-en="Bachelor of Arts – Business Administration & Financial Services">Bachelor of Arts – Business Administration & Financial Services</div>
+      <div class="edu-period">10/2022 – 09/2025</div>
       <div class="edu-school">DHBW – Baden-Württemberg Cooperative State University</div>
       <div class="edu-location">Lörrach, Germany</div>
       <p class="edu-detail" data-en="Overall grade: 2.0 DE">Overall grade: 2.0 DE</p>
