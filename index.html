@@ -477,12 +477,14 @@ section:last-of-type { border-bottom: none; }
   font-size: 13px;
   color: var(--fg-muted);
   grid-column: 1 / -1;
+  grid-row: 3;
   margin-top: 6px;
 }
 
 /* Module semester grid */
 .edu-modules {
   grid-column: 1 / -1;
+  grid-row: 3;
   margin-top: 16px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -617,6 +619,7 @@ section:last-of-type { border-bottom: none; }
 /* PROJECTS */
 .edu-projects {
   grid-column: 1 / -1;
+  grid-row: 5;
   margin-top: 20px;
   padding-top: 20px;
 }
@@ -928,9 +931,11 @@ footer {
   .exp-company, .edu-school { order: 3; }
   .exp-location, .edu-location { order: 4; font-size: 13px; margin-bottom: 4px; }
   .exp-bullets, .edu-detail, .edu-modules { order: 5; }
-  .cert-download-btn { order: 6; }
-  .exp-more-toggle { order: 7; }
-  .exp-more-panel { order: 8; }
+  .edu-mod-list { order: 6; }
+  .cert-download-btn { order: 7; }
+  .exp-more-toggle { order: 8; }
+  .exp-more-panel { order: 9; }
+  .edu-projects { order: 10; }
   .exp-role { font-size: 17px; }
   .edu-degree { font-size: 16px; }
   .exp-bullets li { font-size: 15px; }
@@ -1214,7 +1219,7 @@ footer {
       <div class="edu-school">DHBW – Baden-Württemberg Cooperative State University</div>
       <div class="edu-location">Lörrach, Germany</div>
       <p class="edu-detail" data-en="Overall grade: 2.0 DE">Overall grade: 2.0 DE</p>
-      <ul class="edu-mod-list" style="margin-top: 10px;">
+      <ul class="edu-mod-list" style="margin-top: 10px; grid-column: 1 / -1; grid-row: 4;">
         <li>Portfolio Management &amp; Sustainable Finance</li>
         <li style="color:var(--fg-muted)">Credit Business, Digital Data Analysis, Consulting &amp; Sales Competence, Accounting &amp; Taxation, Business Policy, Macroeconomics</li>
       </ul>
