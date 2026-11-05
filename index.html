@@ -519,16 +519,17 @@ section:last-of-type { border-bottom: none; }
 }
 
 .edu-sem-tag {
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 2px 7px;
+  padding: 1px 5px;
   border-radius: 20px;
   background: var(--bg-alt);
   color: var(--fg-muted);
   border: 1px solid var(--border);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .edu-sem-tag.current {
@@ -1393,7 +1394,7 @@ footer {
     document.getElementById('pdfIframe').src = file;
     document.getElementById('pdfDlBtn').href = file;
     document.getElementById('pdfDlBtn').setAttribute('download', file);
-    document.getElementById('pdfDlLabel').textContent = currentLang === 'de' ? 'Herunterladen' : 'Download';
+    document.getElementById('pdfDlLabel').textContent = 'Download';
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
