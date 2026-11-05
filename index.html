@@ -505,7 +505,7 @@ section:last-of-type { border-bottom: none; }
 
 .edu-sem-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
   flex-wrap: nowrap;
   margin-bottom: 10px;
@@ -518,6 +518,7 @@ section:last-of-type { border-bottom: none; }
   text-transform: uppercase;
   color: var(--fg);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .edu-sem-tag {
@@ -905,22 +906,25 @@ footer {
 
   /* Experience & Education — stack to single column */
   .exp-item, .edu-item {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 2px;
   }
   .exp-period, .edu-period {
-    grid-column: 1;
-    grid-row: auto;
-    order: -1;
+    order: 1;
     text-align: left;
+    font-size: 13px;
     margin-bottom: 2px;
-    font-size: 13px;
   }
+  .exp-role, .edu-degree { order: 2; }
+  .exp-company, .edu-school { order: 3; }
   .exp-location, .edu-location {
-    grid-column: 1;
+    order: 4;
     text-align: left;
     font-size: 13px;
   }
+  .exp-bullets, .exp-more-toggle, .exp-more-panel,
+  .edu-detail, .edu-modules { order: 5; }
   .exp-role { font-size: 17px; }
   .edu-degree { font-size: 16px; }
   .exp-bullets li { font-size: 15px; }
@@ -1125,7 +1129,7 @@ footer {
       <div class="edu-modules">
         <div class="edu-sem">
           <div class="edu-sem-header">
-            <span class="edu-sem-label" data-en="Semester 1">Semester 1</span>
+            <span class="edu-sem-label" data-en="Semester 1">Sem. 1</span>
             <span class="edu-sem-tag current" data-en="current">current</span>
           </div>
           <ul class="edu-mod-list">
@@ -1138,7 +1142,7 @@ footer {
         </div>
         <div class="edu-sem upcoming">
           <div class="edu-sem-header">
-            <span class="edu-sem-label" data-en="Semester 2">Semester 2</span>
+            <span class="edu-sem-label" data-en="Semester 2">Sem. 2</span>
             <span class="edu-sem-tag" data-en="upcoming">upcoming</span>
           </div>
           <ul class="edu-mod-list">
@@ -1158,7 +1162,7 @@ footer {
         </div>
         <div class="edu-sem upcoming">
           <div class="edu-sem-header">
-            <span class="edu-sem-label" data-en="Semester 3">Semester 3</span>
+            <span class="edu-sem-label" data-en="Semester 3">Sem. 3</span>
             <span class="edu-sem-tag" data-en="upcoming">upcoming</span>
           </div>
           <ul class="edu-mod-list">
@@ -1180,7 +1184,7 @@ footer {
         </div>
         <div class="edu-sem upcoming">
           <div class="edu-sem-header">
-            <span class="edu-sem-label" data-en="Semester 4">Semester 4</span>
+            <span class="edu-sem-label" data-en="Semester 4">Sem. 4</span>
             <span class="edu-sem-tag" data-en="upcoming">upcoming</span>
           </div>
           <ul class="edu-mod-list">
