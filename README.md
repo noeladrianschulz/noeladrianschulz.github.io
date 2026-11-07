@@ -1,6 +1,6 @@
 # Noel Adrian Schulz
 
-Personal CV and portfolio website, live at **[noeladrianschulz.github.io/cv](https://noeladrianschulz.github.io/cv)**.
+Personal CV and portfolio website, live at **[noeladrianschulz.github.io](https://noeladrianschulz.github.io)**.
 
 MSc Real Estate student at the Lucerne University of Applied Sciences and Arts (HSLU), with a background in retail banking (Volksbank Dreiländereck eG) and real estate sales in Dubai (DG Homes Real Estate Broker LLC).
 
